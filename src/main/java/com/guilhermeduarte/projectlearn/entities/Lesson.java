@@ -1,7 +1,5 @@
 package com.guilhermeduarte.projectlearn.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -10,12 +8,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "sections")
-public class Section {
+@Table(name = "lessons")
+public class Lesson {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,32 +24,20 @@ public class Section {
 	
 	private Integer position;
 	
-	private String imgUri;
-	
 	@ManyToOne
-	@JoinColumn(name = "resource_id")
-	private Resource resource;
+	@JoinColumn(name = "section_id")
+	private Section section;
 	
-	@ManyToOne
-	@JoinColumn(name = "prerequisite_id")
-	private Section prerequisite;
-	
-	@OneToMany(mappedBy = "section")
-	private List<Lesson> lessons = new ArrayList<>();
-	
-	public Section() {
+	public Lesson() {
 		
 	}
 
-	public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource,
-			Section prerequisite) {
+	public Lesson(Long id, String title, String description, Integer position, Section section) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.position = position;
-		this.imgUri = imgUri;
-		this.resource = resource;
-		this.prerequisite = prerequisite;
+		this.section = section;
 	}
 
 	public Long getId() {
@@ -87,32 +72,12 @@ public class Section {
 		this.position = position;
 	}
 
-	public String getImgUri() {
-		return imgUri;
+	public Section getSection() {
+		return section;
 	}
 
-	public void setImgUri(String imgUri) {
-		this.imgUri = imgUri;
-	}
-
-	public Resource getResource() {
-		return resource;
-	}
-
-	public void setResource(Resource resource) {
-		this.resource = resource;
-	}
-
-	public Section getPrerequisite() {
-		return prerequisite;
-	}
-
-	public void setPrerequisite(Section prerequisite) {
-		this.prerequisite = prerequisite;
-	}
-
-	public List<Lesson> getLessons() {
-		return lessons;
+	public void setSection(Section section) {
+		this.section = section;
 	}
 
 	@Override
@@ -128,7 +93,7 @@ public class Section {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Section other = (Section) obj;
+		Lesson other = (Lesson) obj;
 		return Objects.equals(id, other.id);
 	}
 }

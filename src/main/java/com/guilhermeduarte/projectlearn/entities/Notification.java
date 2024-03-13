@@ -23,7 +23,7 @@ public class Notification {
 	
 	private Instant moment;
 	
-	private Boolean read;
+	private boolean read;
 	
 	private String route;
 	
@@ -35,7 +35,7 @@ public class Notification {
 		
 	}
 
-	public Notification(Long id, String text, Instant moment, Boolean read, String route, User user) {
+	public Notification(Long id, String text, Instant moment, boolean read, String route, User user) {
 		this.id = id;
 		this.text = text;
 		this.moment = moment;
@@ -68,11 +68,11 @@ public class Notification {
 		this.moment = moment;
 	}
 
-	public Boolean getRead() {
+	public boolean isRead() {
 		return read;
 	}
 
-	public void setRead(Boolean read) {
+	public void setRead(boolean read) {
 		this.read = read;
 	}
 
@@ -108,5 +108,4 @@ public class Notification {
 		Notification other = (Notification) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 }
