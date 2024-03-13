@@ -1,18 +1,25 @@
 package com.guilhermeduarte.projectlearn.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "lessons")
-public class Lesson {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Lesson {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,22 +27,29 @@ public class Lesson {
 	
 	private String title;
 	
-	private String description;
-	
 	private Integer position;
 	
 	@ManyToOne
 	@JoinColumn(name = "section_id")
 	private Section section;
 	
+	@ManyToMany
+    @JoinTable(name = "lesson_done", 
+    	joinColumns = @JoinColumn(name = "lesson_id"), 
+    	inverseJoinColumns = {
+    			@JoinColumn(name = "user_id"),
+    			@JoinColumn(name = "offer_id")
+    	}
+    )
+	private Set<Enrollment> enrollmentsDone = new HashSet<>();
+	
 	public Lesson() {
 		
 	}
 
-	public Lesson(Long id, String title, String description, Integer position, Section section) {
+	public Lesson(Long id, String title, Integer position, Section section) {
 		this.id = id;
 		this.title = title;
-		this.description = description;
 		this.position = position;
 		this.section = section;
 	}
@@ -56,14 +70,6 @@ public class Lesson {
 		this.title = title;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public Integer getPosition() {
 		return position;
 	}
@@ -78,6 +84,10 @@ public class Lesson {
 
 	public void setSection(Section section) {
 		this.section = section;
+	}
+
+	public Set<Enrollment> getEnrollmentsDone() {
+		return enrollmentsDone;
 	}
 
 	@Override

@@ -27,5 +27,13 @@ INSERT INTO resources(title, description, position, img_uri, type, offer_id) VAL
 INSERT INTO sections(title, description, position, img_uri, resource_id, prerequisite_id) VALUES('Capítulo 1', 'Capitulo sobre alguma coisa', 1, 'https://www.test.com/image', 1, NULL);
 INSERT INTO sections(title, description, position, img_uri, resource_id, prerequisite_id) VALUES('Capítulo 2', 'Capitulo sobre alguma coisa', 2, 'https://www.test.com/image', 1, 1);
 
-INSERT INTO lessons(title, description, position, section_id) VALUES('Aula 1', 'aula 1 sobre alguma coisa', 1, 1);
-INSERT INTO lessons(title, description, position, section_id) VALUES('Aula 2', 'aula 2 sobre alguma coisa', 2, 1);
+INSERT INTO lessons(title, position, section_id) VALUES('Aula 1', 1, 1);
+INSERT INTO contents(id, text_content, video_uri) VALUES(1, 'Material de apoio aula 1', 'https://www.youtube.com.br/video1');
+
+INSERT INTO lessons(title, position, section_id) VALUES('Aula 2', 2, 1);
+INSERT INTO contents(id, text_content, video_uri) VALUES(2, 'Material de apoio aula 2', 'https://www.youtube.com.br/video2');
+
+INSERT INTO lessons(title, position, section_id) VALUES('Aula 3', 3, 1);
+INSERT INTO tasks(id, description, question_count, approval_count, weight, due_date) VALUES(3, 'Fazer Trabalho', 5, 4, 1.0, TIMESTAMP WITH TIME ZONE '2024-01-25T13:00:00Z');
+
+INSERT INTO lesson_done(user_id, lesson_id, offer_id) VALUES(1, 1, 1);
