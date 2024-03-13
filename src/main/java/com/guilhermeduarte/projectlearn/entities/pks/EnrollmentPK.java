@@ -1,6 +1,9 @@
-package com.guilhermeduarte.projectlearn.entities;
+package com.guilhermeduarte.projectlearn.entities.pks;
 
 import java.util.Objects;
+
+import com.guilhermeduarte.projectlearn.entities.Offer;
+import com.guilhermeduarte.projectlearn.entities.User;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;

@@ -3,6 +3,8 @@ package com.guilhermeduarte.projectlearn.entities;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.guilhermeduarte.projectlearn.entities.enums.DeliverStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

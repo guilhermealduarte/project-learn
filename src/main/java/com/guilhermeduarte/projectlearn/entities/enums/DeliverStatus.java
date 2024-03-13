@@ -1,4 +1,4 @@
-package com.guilhermeduarte.projectlearn.entities;
+package com.guilhermeduarte.projectlearn.entities.enums;
 
 public enum DeliverStatus {
 	PENDING,
