@@ -16,3 +16,12 @@ INSERT INTO user_role (user_id, role_id) VALUES (3, 3);
 
 INSERT INTO courses (name, img_uri, img_gray_uri) VALUES ('CURSO 1', 'https://www.test.com/image', 'https://www.test.com/imagegray');
 INSERT INTO courses (name, img_uri, img_gray_uri) VALUES ('CURSO 2', 'https://www.test.com/image', 'https://www.test.com/imagegray');
+
+INSERT INTO offers(edition, course_id, start_moment, end_moment) VALUES('1.0', 1, TIMESTAMP WITH TIME ZONE '2024-01-25T13:00:00Z', TIMESTAMP WITH TIME ZONE '2024-12-30T13:00:00Z');
+
+INSERT INTO resources(title, description, position, img_uri, type, offer_id) VALUES('Aulas Gravadas', 'Aulas Gravadas', 1, 'https://www.test.com/image', 1, 1);
+INSERT INTO resources(title, description, position, img_uri, type, offer_id) VALUES('Tira Dúvidas', 'Tira duvida sobre aulas gravadas', 2, 'https://www.test.com/image', 2, 1);
+INSERT INTO resources(title, description, position, img_uri, type, offer_id) VALUES('Live', 'Live Exclusiva para Turma', 2, 'https://www.test.com/image', 0, 1);
+
+INSERT INTO sections(title, description, position, img_uri, resource_id, prerequisite_id) VALUES('Aula 1', 'aula 1 sobre alguma coisa', 1, 'https://www.test.com/image', 1, NULL);
+INSERT INTO sections(title, description, position, img_uri, resource_id, prerequisite_id) VALUES('Aula 2', 'aula 2 sobre alguma coisa', 2, 'https://www.test.com/image', 1, 1);

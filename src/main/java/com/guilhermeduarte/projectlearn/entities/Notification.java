@@ -35,12 +35,13 @@ public class Notification {
 		
 	}
 
-	public Notification(Long id, String text, Instant moment, Boolean read, String route) {
+	public Notification(Long id, String text, Instant moment, Boolean read, String route, User user) {
 		this.id = id;
 		this.text = text;
 		this.moment = moment;
 		this.read = read;
 		this.route = route;
+		this.user = user;
 	}
 
 	public Long getId() {
@@ -107,4 +108,5 @@ public class Notification {
 		Notification other = (Notification) obj;
 		return Objects.equals(id, other.id);
 	}
+	
 }
